@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Revenue — Chaturbate Install Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --gold:#E63030;
+  --gold-dim:rgba(230,48,48,0.13);
+  --gold-border:rgba(230,48,48,0.3);
+  --bg:#0A0A0A;
+  --bg2:#100F0F;
+  --bg3:#161414;
+  --border:rgba(255,255,255,0.07);
+  --text:#EDEAE4;
+  --muted:#75747E;
+  --dim:#42424D;
+  --cb-orange:#F47321;
+  --cb-teal:#078897;
+  --cb-border:#DDDDDD;
+  --cb-text:#333333;
+  --cb-muted:#777777;
+  --cb-bg:#F5F5F5;
+}
+html{background:var(--bg);}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;}
+
+.hero{padding:72px 40px 56px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(230,48,48,0.07) 0%,transparent 68%);pointer-events:none;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(240,165,0,0.08);border:1px solid var(--gold-border);color:var(--gold);font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.11em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:26px;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#E63030;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.35;}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(32px,5vw,54px);font-weight:800;line-height:1.08;letter-spacing:-0.025em;margin-bottom:14px;}
+h1 em{font-style:normal;color:var(--gold);}
+.sub{font-size:16px;color:var(--muted);max-width:460px;margin:0 auto 32px;font-weight:300;}
+.pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+.pill{display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;padding:7px 16px;font-size:13px;color:var(--muted);}
+.pill strong{color:var(--text);font-weight:500;}
+
+.wrap{max-width:780px;margin:0 auto;padding:0 24px 100px;}
+.section-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin:60px 0 24px;display:flex;align-items:center;gap:12px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.steps{display:flex;flex-direction:column;gap:3px;}
+.step{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color 0.2s;}
+.step:hover{border-color:rgba(240,165,0,0.18);}
+.step-head{display:flex;align-items:flex-start;gap:18px;padding:26px 30px 20px;}
+.step-num{width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--gold-border);background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--gold);}
+.step-body{flex:1;}
+.step-title{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em;}
+.step-desc{font-size:13.5px;color:var(--muted);line-height:1.65;}
+.step-desc strong{color:var(--text);font-weight:500;}
+
+.screen-wrap{margin:0 30px 26px;}
+.screen{background:#fff;border:1px solid #D8D8D8;border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,0.3);}
+.screen-chrome{background:#EFEFEF;border-bottom:1px solid #DCDCDC;padding:8px 12px;display:flex;align-items:center;gap:6px;}
+.chrome-dot{width:8px;height:8px;border-radius:50%;}
+.chrome-dot.r{background:#FF5F57;}.chrome-dot.y{background:#FEBC2E;}.chrome-dot.g{background:#28C840;}
+.chrome-url{flex:1;margin-left:6px;background:#fff;border:1px solid #D8D8D8;border-radius:5px;padding:3px 10px;font-size:11px;color:#555;font-family:'DM Sans',sans-serif;}
+
+.cb-tabs-row{background:#F0F0F0;border-bottom:1px solid #DDD;}
+.cb-tabs{display:flex;gap:0;overflow-x:auto;padding:0 10px;}
+.cb-tab{padding:9px 13px;font-size:12px;color:#777;border-bottom:2px solid transparent;white-space:nowrap;cursor:default;flex-shrink:0;}
+.cb-tab.active{color:var(--cb-teal);border-bottom-color:var(--cb-teal);font-weight:500;}
+.cb-tab.hl{color:var(--cb-orange);font-weight:600;}
+
+.apex-tri-sm{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:15px solid #E63030;}
+.apex-tri-lg{width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:22px solid #E63030;}
+
+.callout{display:flex;gap:12px;align-items:flex-start;background:rgba(240,165,0,0.06);border:1px solid var(--gold-border);border-radius:10px;padding:16px 20px;margin:0 30px 26px;font-size:13px;color:var(--muted);}
+.callout strong{color:var(--gold);font-weight:500;}
+
+.done{margin-top:52px;background:var(--bg2);border:1px solid var(--gold-border);border-radius:16px;padding:44px 36px;text-align:center;}
+.done h2{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.02em;margin-bottom:10px;}
+.done p{font-size:14px;color:var(--muted);max-width:380px;margin:0 auto 28px;}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:left;}
+.feat{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.feat-icon{font-size:18px;margin-bottom:8px;}
+.feat-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;}
+.feat-desc{font-size:11.5px;color:var(--dim);line-height:1.5;}
+
+footer{border-top:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;max-width:780px;margin:0 auto;}
+.footer-logo{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--gold);}
+.footer-meta{font-size:11px;color:var(--dim);}
+
+@media(max-width:580px){
+  .hero{padding:52px 20px 36px;}
+  .step-head{padding:20px 18px 16px;}
+  .screen-wrap{margin:0 16px 20px;}
+  .callout{margin:0 16px 20px;}
+  .features{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:6px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge"><span class="badge-dot"></span>Chaturbate App Store · Setup Guide</div>
+  <div style="margin-bottom:20px;"><img src="/mnt/user-data/uploads/Apex_Revenue_Logo_with_background.png" alt="Apex Revenue" style="height:56px;border-radius:10px;"></div>
+  <h1>Get <em>Apex Revenue</em><br>running on Chaturbate</h1>
+  <p class="sub">Install directly inside your broadcast session — no external tools required.</p>
+  <div class="pills">
+    <div class="pill">⚡ <strong>Setup time:</strong> under 2 minutes</div>
+    <div class="pill">✓ <strong>Platform:</strong> Chaturbate App Store</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="section-label">Installation steps</div>
+  <div class="steps">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Log in to your Chaturbate account</div>
+          <div class="step-desc">Go to <strong>chaturbate.com</strong> and sign in.</div>
+        </div>
+      </div>
+      <div class="screen-wrap">
+        <div class="screen">
+          <div class="screen-chrome">
+            <div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div>
+            <div class="chrome-url">chaturbate.com</div>
+          </div>
+          <div style="background:#fff;border-bottom:2px solid var(--cb-orange);padding:9px 16px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--cb-orange);">Chaturbate</span>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="font-size:12px;color:#555;">Signed in as <strong style="color:#333;">yourname</strong></span>
+              <span style="background:var(--cb-orange);color:#fff;font-size:11px;font-weight:600;padding:6px 14px;border-radius:4px;">Broadcast Yourself »</span>
+            </div>
+          </div>
+          <div style="background:#F5F5F5;padding:20px;text-align:center;min-height:50px;display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:12px;color:#999;">Logged in and ready — click Broadcast Yourself to continue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Begin a "Broadcast Yourself" session</div>
+          <div class="step-desc">Click <strong>Broadcast Yourself</strong> from the top nav. This opens your broadcaster room with camera setup, chat, and the app tabs at the bottom. You don't need to actually start streaming yet.</div>
+        </div>
+      </div>
+      <div class="screen-wrap">
+        <div class="screen">
+          <div class="screen-chrome">
+            <div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div>
+            <div class="chrome-url">chaturbate.com/broadcast/</div>
+          </div>
+          <div style="background:#FFF9E6;border-bottom:1px solid #F0DE8A;padding:7px 14px;font-size:11px;color:#666;text-align:center;">
+            Add an extra layer of protection to your account — set up 2-Step Verification at the <span style="color:var(--cb-teal);">Security Center</span>
+          </div>
+          <div style="background:#fff;border-bottom:1px solid #DDD;padding:0 14px;display:flex;gap:0;">
+            <div style="background:var(--cb-teal);color:#fff;font-size:12px;padding:8px 16px;font-weight:500;border-radius:4px 4px 0 0;margin-right:4px;">My Broadcast</div>
+            <div style="color:var(--cb-teal);font-size:12px;padding:8px 16px;border-radius:4px 4px 0 0;">Creator Portal</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #EEE;min-height:120px;">
+            <div style="padding:14px;border-right:1px solid #EEE;">
+              <div style="font-size:10px;color:#999;margin-bottom:4px;">Room Subject</div>
+              <div style="font-size:12px;font-weight:500;color:#333;margin-bottom:12px;">Your room name here</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">
+                <div>
+                  <div style="font-size:10px;color:#999;margin-bottom:3px;">Camera</div>
+                  <div style="background:#fff;border:1px solid #CCC;border-radius:3px;padding:4px 8px;font-size:10px;color:#555;display:flex;justify-content:space-between;">HP 5MP Camera <span>▾</span></div>
+                </div>
+                <div>
+                  <div style="font-size:10px;color:#999;margin-bottom:3px;">Resolution</div>
+                  <div style="background:#fff;border:1px solid #CCC;border-radius:3px;padding:4px 8px;font-size:10px;color:#555;display:flex;justify-content:space-between;">1280×720 <span>▾</span></div>
+                </div>
+              </div>
+              <div style="background:#111;border-radius:5px;height:48px;display:flex;align-items:center;justify-content:center;">
+                <span style="color:#555;font-size:16px;">⊘</span>
+              </div>
+            </div>
+            <div style="padding:14px;background:#FAFAFA;">
+              <div style="background:var(--cb-orange);color:#fff;font-size:12px;font-weight:600;padding:9px;border-radius:4px;text-align:center;margin-bottom:8px;">Start Broadcasting</div>
+              <div style="text-align:center;font-size:10px;color:#999;">For high quality streams we strongly recommend:<br><span style="color:var(--cb-teal);">Use external software (OBS)</span></div>
+            </div>
+          </div>
+          <!-- TABS with Apps highlighted -->
+          <div class="cb-tabs-row">
+            <div class="cb-tabs">
+              <div class="cb-tab hl">Apps</div>
+              <div class="cb-tab">Games</div>
+              <div class="cb-tab">Bio</div>
+              <div class="cb-tab">Settings &amp; Privacy</div>
+              <div class="cb-tab">Contest Stats</div>
+              <div class="cb-tab">Token Stats</div>
+              <div class="cb-tab">Share</div>
+              <div class="cb-tab">Memberships</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <div>💡</div>
+        <div>The <strong>Apps tab</strong> is visible at the bottom of the broadcaster page — you don't need to go live first. Just being on this page gives you full access to the App Directory.</div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-head">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Select "Apps" → Search "ApexRevenue" → Click "Start App"</div>
+          <div class="step-desc">Click the <strong>Apps</strong> tab. In the App Directory, type <strong>ApexRevenue</strong> in the search bar (no space), select it from the dropdown, then click the teal <strong>Start App</strong> button on its listing page.</div>
+        </div>
+      </div>
+
+      <!-- SUB: Search -->
+      <div style="padding:0 30px 10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">— Search</div>
+      <div class="screen-wrap">
+        <div class="screen">
+          <div class="screen-chrome">
+            <div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div>
+            <div class="chrome-url">chaturbate.com/broadcast/</div>
+          </div>
+          <div class="cb-tabs-row">
+            <div class="cb-tabs">
+              <div class="cb-tab active">Apps</div>
+              <div class="cb-tab">Games</div>
+              <div class="cb-tab">Bio</div>
+              <div class="cb-tab">Settings &amp; Privacy</div>
+              <div class="cb-tab">Token Stats</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 1fr;">
+            <div style="background:#F8F8F8;border-right:1px solid #DDD;padding:12px;">
+              <div style="font-size:10px;color:#999;margin-bottom:8px;font-weight:500;">No Running Apps</div>
+              <div style="background:#EBEBEB;border-radius:4px;padding:7px 10px;font-size:11px;color:var(--cb-teal);font-weight:500;display:flex;align-items:center;gap:6px;">⊞ Explore Apps</div>
+            </div>
+            <div style="padding:14px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                <div style="font-size:13px;font-weight:600;color:#333;">App Directory</div>
+                <div style="background:var(--cb-orange);color:#fff;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;letter-spacing:0.05em;">NEW</div>
+              </div>
+              <div style="background:linear-gradient(135deg,#0073AB,#00A8CC);border-radius:6px;padding:12px 14px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:2px;">Unleash the Power of Chat</div>
+                <div style="font-size:10px;color:rgba(255,255,255,0.8);">Supercharge room engagement with tip menus, overlays and fun games.</div>
+              </div>
+              <!-- Search box -->
+              <div style="display:flex;align-items:center;gap:8px;border:2px solid var(--cb-teal);border-radius:6px;padding:7px 12px;margin-bottom:8px;background:#fff;">
+                <span style="font-size:13px;color:#999;">🔍</span>
+                <span style="font-size:13px;color:#333;flex:1;">ApexRevenue</span>
+                <span style="font-size:12px;color:#CCC;cursor:default;">✕</span>
+              </div>
+              <!-- Dropdown -->
+              <div style="border:1px solid #DDD;border-radius:6px;background:#fff;padding:9px 12px;box-shadow:0 4px 14px rgba(0,0,0,0.1);display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+                <span style="font-size:12px;color:#999;">🔍</span>
+                <span style="font-size:13px;color:#333;font-weight:500;">ApexRevenue</span>
+              </div>
+              <div style="font-size:12px;font-weight:600;color:#333;margin-bottom:8px;">Favorites</div>
+              <div style="background:#fff;border:1px solid #DDD;border-radius:8px;padding:12px;display:flex;gap:10px;align-items:flex-start;max-width:240px;">
+                <div style="width:40px;height:40px;border-radius:7px;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <div class="apex-tri-sm"></div>
+                </div>
+                <div>
+                  <div style="font-size:13px;font-weight:600;color:#333;margin-bottom:2px;">ApexRevenue</div>
+                  <div style="font-size:10px;color:#999;line-height:1.5;">No reviews yet<br>All-in-one, Leaderboard, Overlay<br>by theclassygent496395</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB: Listing + Start App -->
+      <div style="padding:0 30px 10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">— App listing page</div>
+      <div class="screen-wrap">
+        <div class="screen">
+          <div class="screen-chrome">
+            <div class="chrome-dot r"></div><div class="chrome-dot y"></div><div class="chrome-dot g"></div>
+            <div class="chrome-url">chaturbate.com/broadcast/</div>
+          </div>
+          <div class="cb-tabs-row">
+            <div class="cb-tabs">
+              <div class="cb-tab active">Apps</div>
+              <div class="cb-tab">Games</div>
+              <div class="cb-tab">Bio</div>
+              <div class="cb-tab">Settings &amp; Privacy</div>
+              <div class="cb-tab">Contest Stats</div>
+              <div class="cb-tab">Token Stats</div>
+              <div class="cb-tab">Share</div>
+              <div class="cb-tab">Memberships</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 1fr;">
+            <div style="background:#F8F8F8;border-right:1px solid #DDD;padding:12px;">
+              <div style="font-size:10px;color:#999;margin-bottom:8px;font-weight:500;">No Running Apps</div>
+              <div style="background:#EBEBEB;border-radius:4px;padding:7px 10px;font-size:11px;color:var(--cb-teal);font-weight:500;display:flex;align-items:center;gap:6px;">⊞ Explore Apps</div>
+            </div>
+            <div style="padding:14px;">
+              <div style="font-size:12px;color:var(--cb-teal);margin-bottom:12px;">‹ Back</div>
+              <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;">
+                <div style="width:52px;height:52px;border-radius:9px;background:#1A1A1A;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <div class="apex-tri-lg"></div>
+                </div>
+                <div style="flex:1;">
+                  <div style="font-size:16px;font-weight:700;color:#333;display:flex;align-items:center;gap:6px;margin-bottom:2px;">ApexRevenue <span style="color:#E05C7A;font-size:14px;">♥</span></div>
+                  <div style="font-size:11px;color:#999;">All-in-one, Leaderboard, Overlay</div>
+                </div>
+                <div style="background:var(--cb-teal);color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:5px;white-space:nowrap;cursor:default;">Start App</div>
+              </div>
+              <!-- Sub tabs -->
+              <div style="display:flex;gap:0;border-bottom:1px solid #DDD;margin-bottom:12px;">
+                <div style="padding:7px 12px;font-size:12px;color:var(--cb-teal);border-bottom:2px solid var(--cb-teal);font-weight:500;">About</div>
+                <div style="padding:7px 12px;font-size:12px;color:#999;">Settings</div>
+                <div style="padding:7px 12px;font-size:12px;color:#999;">Reviews</div>
+              </div>
+              <!-- Stats row -->
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);border:1px solid #DDD;border-radius:6px;overflow:hidden;margin-bottom:12px;">
+                <div style="padding:8px;text-align:center;border-right:1px solid #DDD;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#999;margin-bottom:3px;">Ratings</div>
+                  <div style="font-size:14px;font-weight:700;color:#333;">0</div>
+                  <div style="font-size:9px;color:#CCC;">★★★★★</div>
+                </div>
+                <div style="padding:8px;text-align:center;border-right:1px solid #DDD;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#999;margin-bottom:3px;">Developer</div>
+                  <div style="font-size:9px;font-weight:500;color:#555;line-height:1.4;">theclassy<br>gent496395</div>
+                </div>
+                <div style="padding:8px;text-align:center;border-right:1px solid #DDD;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#999;margin-bottom:3px;">Current Users</div>
+                  <div style="font-size:14px;font-weight:700;color:#333;">0</div>
+                  <div style="font-size:9px;color:#999;">Users</div>
+                </div>
+                <div style="padding:8px;text-align:center;border-right:1px solid #DDD;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#999;margin-bottom:3px;">Favorited</div>
+                  <div style="font-size:14px;font-weight:700;color:#333;">1</div>
+                  <div style="font-size:9px;color:#999;">Users</div>
+                </div>
+                <div style="padding:8px;text-align:center;">
+                  <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#999;margin-bottom:3px;">Last Updated</div>
+                  <div style="font-size:14px;font-weight:700;color:#333;">0</div>
+                  <div style="font-size:9px;color:#999;">Days Ago</div>
+                </div>
+              </div>
+              <div style="font-size:12px;font-weight:600;color:#333;margin-bottom:5px;">Overview</div>
+              <div style="font-size:11.5px;color:#777;line-height:1.6;">The Problem: Top-earning cam performers are leaving money on the table every single session — and paying someone else to let it happen.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <div>⚡</div>
+        <div>Once you click <strong>Start App</strong>, Apex Revenue activates instantly in your broadcaster session. The overlay and dashboard appear in your room — no reload needed.</div>
+      </div>
+    </div>
+
+  </div><!-- /steps -->
+
+  <div class="done">
+    <h2>You're all set 🎉</h2>
+    <p>Apex Revenue is now live in your Chaturbate broadcaster session. Here's what you've unlocked:</p>
+    <div class="features">
+      <div class="feat">
+        <div class="feat-icon">🐋</div>
+        <div class="feat-name">Whale Tracker</div>
+        <div class="feat-desc">Real-time alerts the moment high-value tippers go active in your room</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <div class="feat-name">AI Tip Prompts</div>
+        <div class="feat-desc">Smart monetization cues based on your live session data</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🏆</div>
+        <div class="feat-name">Fan Leaderboard</div>
+        <div class="feat-desc">30-day rolling leaderboard that surfaces and rewards your top tippers</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <img src="/mnt/user-data/uploads/Apex_Revenue_Logo_with_background.png" alt="Apex Revenue" style="height:32px;border-radius:6px;">
+  <div class="footer-meta">support@apexrevenue.works</div>
+</footer>
+
+</body>
+</html>
