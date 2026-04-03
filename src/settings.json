@@ -1,0 +1,468 @@
+{
+  "onboarding_settings": {
+    "type": "fieldset",
+    "title": "Onboarding & Extension Promotion",
+    "settings": {
+      "onboardingEnabled": {
+        "type": "boolean",
+        "title": "Enable new user onboarding",
+        "default": true,
+        "order": 0
+      },
+      "autoAnnounceEnabled": {
+        "type": "boolean",
+        "title": "Auto-announce extension periodically",
+        "default": true,
+        "order": 1
+      },
+      "announceIntervalMinutes": {
+        "type": "number",
+        "title": "Announcement interval (minutes)",
+        "default": 30,
+        "order": 2
+      }
+    },
+    "order": 0
+  },
+  "extension_settings": {
+    "type": "fieldset",
+    "title": "Extension Control",
+    "settings": {
+      "extensionAutoControl": {
+        "type": "boolean",
+        "title": "Auto start/stop extension with app",
+        "default": true,
+        "order": 0
+      }
+    },
+    "order": 1
+  },
+  "tip_settings": {
+    "type": "fieldset",
+    "title": "Tip Tracking & Notifications",
+    "settings": {
+      "tipAcknowledgmentEnabled": {
+        "type": "boolean",
+        "title": "Send tip acknowledgment messages",
+        "default": true,
+        "order": 0
+      },
+      "bigTipThreshold": {
+        "type": "number",
+        "title": "Big tip threshold (tokens)",
+        "default": 100,
+        "order": 1
+      }
+    },
+    "order": 2
+  },
+  "display_settings": {
+    "type": "fieldset",
+    "title": "Display & Branding",
+    "settings": {
+      "bannersEnabled": {
+        "type": "boolean",
+        "title": "Enable chat banners",
+        "default": true,
+        "order": 0
+      },
+      "welcomeMessage": {
+        "type": "string",
+        "title": "Custom welcome message (optional)",
+        "maxLength": 500,
+        "default": "",
+        "order": 1
+      },
+      "panelStyle": {
+        "type": "string",
+        "title": "Panel display style",
+        "enum": [
+          "Tips & Top Tipper",
+          "Tips Only",
+          "Disabled"
+        ],
+        "default": "Tips & Top Tipper",
+        "order": 2
+      }
+    },
+    "order": 3
+  },
+  "announcement_settings": {
+    "type": "fieldset",
+    "title": "Custom Announcements",
+    "settings": {
+      "announcementsEnabled": {
+        "type": "boolean",
+        "title": "Enable custom announcements",
+        "default": true,
+        "order": 0
+      },
+      "announceTheme": {
+        "type": "string",
+        "title": "Announcement color theme",
+        "enum": [
+          "Apex Purple",
+          "Gold VIP",
+          "Neon Green",
+          "Hot Pink",
+          "Ice Blue",
+          "Sunset Orange",
+          "Stealth Dark"
+        ],
+        "default": "Apex Purple",
+        "order": 1
+      },
+      "tipAnnounceMsg": {
+        "type": "string",
+        "title": "Tip announcement message ({user} {amount} {total})",
+        "maxLength": 300,
+        "default": "{user} just tipped {amount} tokens! Total: {total} tk",
+        "order": 2
+      },
+      "bigTipAnnounceMsg": {
+        "type": "string",
+        "title": "Big tip announcement ({user} {amount} {total})",
+        "maxLength": 300,
+        "default": "BIG TIP! {user} dropped {amount} tokens! Total session: {total} tk",
+        "order": 3
+      },
+      "tipGoalEnabled": {
+        "type": "boolean",
+        "title": "Enable tip goal announcements",
+        "default": false,
+        "order": 4
+      },
+      "tipGoalAmount": {
+        "type": "number",
+        "title": "Tip goal target (tokens)",
+        "default": 1000,
+        "order": 5
+      },
+      "tipGoalMsg": {
+        "type": "string",
+        "title": "Goal reached message ({total} {goal} {percent})",
+        "maxLength": 300,
+        "default": "GOAL REACHED! {total}/{goal} tokens hit! Thank you all!",
+        "order": 6
+      },
+      "tipGoalProgressInterval": {
+        "type": "number",
+        "title": "Goal progress update every N% (0 = off)",
+        "default": 25,
+        "order": 7
+      }
+    },
+    "order": 4
+  },
+  "banner_settings": {
+    "type": "fieldset",
+    "title": "Chat Banners & Triggers",
+    "settings": {
+      "bannerEnterEnabled": {
+        "type": "boolean",
+        "title": "Banner when known tipper enters",
+        "default": true,
+        "order": 0
+      },
+      "bannerEnterMinTips": {
+        "type": "number",
+        "title": "Min lifetime tips to trigger enter banner",
+        "default": 50,
+        "order": 1
+      },
+      "bannerEnterMsg": {
+        "type": "string",
+        "title": "Tipper enter message ({user} {tips} {tier})",
+        "maxLength": 300,
+        "default": "Welcome back {user}! ({tips} tk lifetime - {tier})",
+        "order": 2
+      },
+      "bannerFollowEnabled": {
+        "type": "boolean",
+        "title": "Banner on new follow",
+        "default": true,
+        "order": 3
+      },
+      "bannerFollowMsg": {
+        "type": "string",
+        "title": "Follow message ({user} {followers})",
+        "maxLength": 300,
+        "default": "{user} just followed! ({followers} total followers)",
+        "order": 4
+      },
+      "bannerFanclubEnabled": {
+        "type": "boolean",
+        "title": "Banner on fanclub join",
+        "default": true,
+        "order": 5
+      },
+      "bannerFanclubMsg": {
+        "type": "string",
+        "title": "Fanclub join message ({user})",
+        "maxLength": 300,
+        "default": "{user} just joined the Fan Club!",
+        "order": 6
+      },
+      "bannerMilestoneEnabled": {
+        "type": "boolean",
+        "title": "Banner on viewer milestones",
+        "default": false,
+        "order": 7
+      },
+      "bannerMilestoneInterval": {
+        "type": "number",
+        "title": "Viewer milestone every N users (e.g. 50)",
+        "default": 50,
+        "order": 8
+      },
+      "bannerMilestoneMsg": {
+        "type": "string",
+        "title": "Milestone message ({count})",
+        "maxLength": 300,
+        "default": "{count} viewers have visited today! Let's keep growing!",
+        "order": 9
+      },
+      "recurringBannerEnabled": {
+        "type": "boolean",
+        "title": "Enable recurring custom banner",
+        "default": false,
+        "order": 10
+      },
+      "recurringBannerMsg": {
+        "type": "string",
+        "title": "Recurring banner message",
+        "maxLength": 500,
+        "default": "",
+        "order": 11
+      },
+      "recurringBannerInterval": {
+        "type": "number",
+        "title": "Recurring banner interval (minutes)",
+        "default": 15,
+        "order": 12
+      }
+    },
+    "order": 5
+  },
+  "moderation_settings": {
+    "type": "fieldset",
+    "title": "Chat Moderation & Filtering",
+    "settings": {
+      "moderationEnabled": {
+        "type": "boolean",
+        "title": "Enable chat moderation",
+        "default": true,
+        "order": 0
+      },
+      "blockedKeywords": {
+        "type": "string",
+        "title": "Blocked keywords (comma-separated)",
+        "maxLength": 1000,
+        "default": "",
+        "order": 1
+      },
+      "blockAction": {
+        "type": "string",
+        "title": "Action for blocked keywords",
+        "enum": [
+          "replace",
+          "hide",
+          "flag"
+        ],
+        "default": "replace",
+        "order": 2
+      },
+      "replacementText": {
+        "type": "string",
+        "title": "Replacement text for censored words",
+        "maxLength": 20,
+        "default": "***",
+        "order": 3
+      },
+      "spamFilterEnabled": {
+        "type": "boolean",
+        "title": "Enable spam auto-detection",
+        "default": true,
+        "order": 4
+      },
+      "spamAction": {
+        "type": "string",
+        "title": "Spam action",
+        "enum": [
+          "fix",
+          "hide"
+        ],
+        "default": "fix",
+        "order": 5
+      },
+      "maxCapsPercent": {
+        "type": "number",
+        "title": "Max caps percentage before auto-fix (0=off)",
+        "default": 70,
+        "order": 6
+      },
+      "maxRepeatedChars": {
+        "type": "number",
+        "title": "Max repeated characters before trimming",
+        "default": 5,
+        "order": 7
+      },
+      "linkFilterEnabled": {
+        "type": "boolean",
+        "title": "Block links from non-privileged users",
+        "default": false,
+        "order": 8
+      },
+      "linkAction": {
+        "type": "string",
+        "title": "Link action",
+        "enum": [
+          "hide",
+          "replace"
+        ],
+        "default": "hide",
+        "order": 9
+      },
+      "linkFilterExemptTippers": {
+        "type": "boolean",
+        "title": "Allow links from tippers",
+        "default": true,
+        "order": 10
+      },
+      "linkFilterMinTips": {
+        "type": "number",
+        "title": "Min lifetime tips for link exemption",
+        "default": 50,
+        "order": 11
+      },
+      "linkFilterExemptFanclub": {
+        "type": "boolean",
+        "title": "Allow links from fanclub members",
+        "default": true,
+        "order": 12
+      },
+      "dataMaskingEnabled": {
+        "type": "boolean",
+        "title": "Auto-hide emails & phone numbers in chat",
+        "default": true,
+        "order": 13
+      },
+      "modLogToOwner": {
+        "type": "boolean",
+        "title": "Whisper moderation actions to broadcaster",
+        "default": true,
+        "order": 14
+      },
+      "modLogIncludeText": {
+        "type": "boolean",
+        "title": "Include original message in mod log",
+        "default": false,
+        "order": 15
+      }
+    },
+    "order": 6
+  },
+  "message_style_settings": {
+    "type": "fieldset",
+    "title": "Message Styling & Badges",
+    "settings": {
+      "messageStyleEnabled": {
+        "type": "boolean",
+        "title": "Enable message styling",
+        "default": true,
+        "order": 0
+      },
+      "tipperHighlightEnabled": {
+        "type": "boolean",
+        "title": "Highlight tipper messages",
+        "default": true,
+        "order": 1
+      },
+      "tipperHighlightBg": {
+        "type": "string",
+        "title": "Tipper message background color",
+        "maxLength": 7,
+        "default": "#1a1a2e",
+        "order": 2
+      },
+      "bigTipperStyleThreshold": {
+        "type": "number",
+        "title": "Big tipper highlight threshold (tokens)",
+        "default": 500,
+        "order": 3
+      },
+      "bigTipperHighlightBg": {
+        "type": "string",
+        "title": "Big tipper background color",
+        "maxLength": 7,
+        "default": "#2e1a07",
+        "order": 4
+      },
+      "tipperBadgeEnabled": {
+        "type": "boolean",
+        "title": "Show tier badge on tipper messages",
+        "default": true,
+        "order": 5
+      },
+      "fanclubBadgeEnabled": {
+        "type": "boolean",
+        "title": "Show badge for fanclub members",
+        "default": true,
+        "order": 6
+      },
+      "fanclubBadgeText": {
+        "type": "string",
+        "title": "Fanclub badge emoji/text",
+        "maxLength": 20,
+        "default": ":heart22",
+        "order": 7
+      },
+      "fanclubHighlightBg": {
+        "type": "string",
+        "title": "Fanclub message background (blank=none)",
+        "maxLength": 7,
+        "default": "",
+        "order": 8
+      },
+      "modHighlightEnabled": {
+        "type": "boolean",
+        "title": "Highlight mod messages",
+        "default": false,
+        "order": 9
+      },
+      "modHighlightBg": {
+        "type": "string",
+        "title": "Mod message background color",
+        "maxLength": 7,
+        "default": "#1a2e1a",
+        "order": 10
+      },
+      "modBadgeEnabled": {
+        "type": "boolean",
+        "title": "Show badge on mod messages",
+        "default": false,
+        "order": 11
+      },
+      "ownerHighlightEnabled": {
+        "type": "boolean",
+        "title": "Highlight broadcaster messages",
+        "default": true,
+        "order": 12
+      },
+      "ownerHighlightBg": {
+        "type": "string",
+        "title": "Broadcaster message background color",
+        "maxLength": 7,
+        "default": "#2d1a4e",
+        "order": 13
+      },
+      "ownerBadgeEnabled": {
+        "type": "boolean",
+        "title": "Show badge on broadcaster messages",
+        "default": true,
+        "order": 14
+      }
+    },
+    "order": 7
+  }
+}
