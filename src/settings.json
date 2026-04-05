@@ -244,9 +244,94 @@
     },
     "order": 5
   },
+  "tip_event_settings": {
+    "type": "fieldset",
+    "title": "Tip-Triggered Toy Events (v0.3.0)",
+    "settings": {
+      "tipEventsEnabled": {
+        "type": "boolean",
+        "title": "Enable tip-triggered toy events",
+        "description": "Any fan can tip a specific amount to trigger a toy pattern",
+        "default": true,
+        "order": 0
+      },
+      "waveTipAmount": {
+        "type": "number",
+        "title": "Wave trigger (tokens)",
+        "description": "Tip this exact amount to trigger Wave pattern",
+        "default": 15,
+        "minimum": 1,
+        "order": 1
+      },
+      "pulseTipAmount": {
+        "type": "number",
+        "title": "Pulse trigger (tokens)",
+        "description": "Tip this exact amount to trigger Pulse pattern",
+        "default": 25,
+        "minimum": 1,
+        "order": 2
+      },
+      "earthquakeTipAmount": {
+        "type": "number",
+        "title": "Earthquake trigger (tokens)",
+        "description": "Tip this exact amount to trigger Earthquake pattern",
+        "default": 50,
+        "minimum": 1,
+        "order": 3
+      },
+      "maxTipAmount": {
+        "type": "number",
+        "title": "Max Power trigger (tokens)",
+        "description": "Tip this exact amount to trigger Max Power pattern",
+        "default": 100,
+        "minimum": 1,
+        "order": 4
+      },
+      "eventQueueEnabled": {
+        "type": "boolean",
+        "title": "Queue events when multiple trigger quickly",
+        "description": "Events queue up instead of overriding each other",
+        "default": true,
+        "order": 5
+      },
+      "waveDuration": {
+        "type": "number",
+        "title": "Wave duration (seconds)",
+        "default": 10,
+        "minimum": 3,
+        "maximum": 60,
+        "order": 6
+      },
+      "pulseDuration": {
+        "type": "number",
+        "title": "Pulse duration (seconds)",
+        "default": 10,
+        "minimum": 3,
+        "maximum": 60,
+        "order": 7
+      },
+      "earthquakeDuration": {
+        "type": "number",
+        "title": "Earthquake duration (seconds)",
+        "default": 8,
+        "minimum": 3,
+        "maximum": 60,
+        "order": 8
+      },
+      "maxDuration": {
+        "type": "number",
+        "title": "Max Power duration (seconds)",
+        "default": 5,
+        "minimum": 3,
+        "maximum": 60,
+        "order": 9
+      }
+    },
+    "order": 6
+  },
   "give_control_settings": {
     "type": "fieldset",
-    "title": "Give Control (v0.2.0)",
+    "title": "Give Control (v0.3.0)",
     "settings": {
       "giveControlEnabled": {
         "type": "boolean",
@@ -257,8 +342,8 @@
       },
       "giveControlTokens": {
         "type": "number",
-        "title": "Give Control token amount",
-        "description": "Exact tip amount to trigger Give Control",
+        "title": "Give Control activation tip",
+        "description": "Exact tip amount to buy a Give Control session",
         "default": 666,
         "minimum": 1,
         "order": 1
@@ -266,7 +351,7 @@
       "giveControlDuration": {
         "type": "number",
         "title": "Give Control duration (seconds)",
-        "description": "How long the fan controls the toy",
+        "description": "Base session time. Fan can extend by tipping more.",
         "default": 60,
         "minimum": 10,
         "maximum": 300,
@@ -279,6 +364,14 @@
         "maxLength": 200,
         "default": "apexrevenue.works/control",
         "order": 3
+      },
+      "tokensPerExtraMinute": {
+        "type": "number",
+        "title": "Tokens per extra minute of control",
+        "description": "Fan tips this many tokens to add 1 minute of control time",
+        "default": 100,
+        "minimum": 10,
+        "order": 4
       }
     },
     "order": 7

@@ -93,7 +93,38 @@
       ' | Announcements: ' + ($settings.announcementsEnabled ? 'ON' : 'OFF') +
       ' | Banners: ' + ($settings.bannersEnabled ? 'ON' : 'OFF'));
 
-  // ── v0.2.0: Give Control & Digital Sync Commands ──────────────────────────
+  // ── v0.3.0: Tip Event Commands ─────────────────────────────────────────────
+  } else if (sub === 'events') {
+    // /apex events — show current tip-triggered event settings
+    if ($settings.tipEventsEnabled) {
+        apexWhisper(username,
+            '🎯 Tip-Triggered Events (' + ($settings.tipEventsEnabled ? 'ON' : 'OFF') + '):\n'
+            + 'Wave: ' + ($settings.waveTipAmount || 15) + ' tk (' + ($settings.waveDuration || 10) + 's)\n'
+            + 'Pulse: ' + ($settings.pulseTipAmount || 25) + ' tk (' + ($settings.pulseDuration || 10) + 's)\n'
+            + 'Earthquake: ' + ($settings.earthquakeTipAmount || 50) + ' tk (' + ($settings.earthquakeDuration || 8) + 's)\n'
+            + 'Max Power: ' + ($settings.maxTipAmount || 100) + ' tk (' + ($settings.maxDuration || 5) + 's)\n'
+            + 'Queue: ' + ($settings.eventQueueEnabled ? 'ON' : 'OFF')
+        );
+    } else {
+        apexWhisper(username, 'Tip-triggered events are disabled in settings.');
+    }
+  } else if (sub === 'queue') {
+    // /apex queue — show current event queue
+    var eq = $kv.get('event_queue', []);
+    if (eq.length === 0) {
+        apexWhisper(username, 'Event queue is empty.');
+    } else {
+        var qLines = eq.map(function(e, i) {
+            return (i + 1) + '. ' + e.pattern.toUpperCase() + ' (' + e.secs + 's) — ' + e.fan;
+        });
+        apexWhisper(username, '🎯 Event Queue (' + eq.length + '):\n' + qLines.join('\n'));
+    }
+  } else if (sub === 'clearqueue') {
+    // /apex clearqueue — clear event queue
+    $kv.set('event_queue', []);
+    apexWhisper(username, 'Event queue cleared.');
+
+  // ── Give Control & Digital Sync Commands ──────────────────────────────────
   } else if (sub === 'sync') {
     // /apex sync — broadcast sync instructions to room
     var syncUrl = $settings.syncPageUrl || 'apexrevenue.works/sync';
@@ -121,6 +152,23 @@
 
         sendThemedAnnouncement('🎮 Give Control session ENDED. Toy stopped.');
         apexWhisper(username, 'Control session terminated for ' + activeSession.fan);
+    } else {
+        apexWhisper(username, 'No active Give Control session.');
+    }
+  } else if (sub === 'balance' || sub === 'controlbalance') {
+    // /apex balance — check active control session balance
+    var balSession = $kv.get('active_control_session', null);
+    if (balSession) {
+        apexWhisper(username,
+            '🎮 Active Control Session:\n'
+            + 'Fan: ' + balSession.fan + '\n'
+            + 'Balance: ' + (balSession.balance || 0) + ' tk\n'
+            + 'Duration: ' + balSession.duration + 's\n'
+            + 'Event costs — Wave: ' + (balSession.eventCosts ? balSession.eventCosts.wave : '?')
+            + ' | Pulse: ' + (balSession.eventCosts ? balSession.eventCosts.pulse : '?')
+            + ' | Quake: ' + (balSession.eventCosts ? balSession.eventCosts.earthquake : '?')
+            + ' | Max: ' + (balSession.eventCosts ? balSession.eventCosts.max : '?')
+        );
     } else {
         apexWhisper(username, 'No active Give Control session.');
     }
