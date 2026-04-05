@@ -34,9 +34,16 @@ src/
 - **Broadcast Panel** — real-time session stats with goal progress display
 - **Chat Commands** — `/apex help`, `/apex stats`, `/apex top`, `/apex announce`, and more
 
+### v0.2.0 — Give Control & Digital Sync
+
+- **Give Control** — Fans tip a configurable token amount to gain real-time toy control via OTP-secured WebSocket session. Auto-expires on timer with broadcaster override (`/apex endcontrol`, `/apex extendcontrol <secs>`)
+- **Digital Sync** — Fans with Bluetooth toys sync to the broadcaster's vibes in real time via Intiface Central. Periodic auto-announcements configurable in settings. Broadcaster triggers with `/apex sync`
+- **New Settings** — `giveControlEnabled`, `giveControlTokens`, `giveControlDuration`, `controlPageUrl`, `syncEnabled`, `syncPageUrl`, `syncAnnounceInterval`
+- **New Callbacks** — `endGiveControl` (auto-end session timer), `syncAnnounce` (periodic sync broadcast)
+
 ## CB Developer Portal
 
 This app is deployed via the [Chaturbate Developer Portal](https://devportal.cb.dev).
 
 - **App ID:** `d24e5989-0000-0000-0000-000000000000`
-- **Version:** 1.1.0
+- **Version:** 2.0.0

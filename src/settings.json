@@ -244,6 +244,75 @@
     },
     "order": 5
   },
+  "give_control_settings": {
+    "type": "fieldset",
+    "title": "Give Control (v0.2.0)",
+    "settings": {
+      "giveControlEnabled": {
+        "type": "boolean",
+        "title": "Enable Give Control",
+        "description": "Allow fans to buy real-time toy control via tip",
+        "default": false,
+        "order": 0
+      },
+      "giveControlTokens": {
+        "type": "number",
+        "title": "Give Control token amount",
+        "description": "Exact tip amount to trigger Give Control",
+        "default": 666,
+        "minimum": 1,
+        "order": 1
+      },
+      "giveControlDuration": {
+        "type": "number",
+        "title": "Give Control duration (seconds)",
+        "description": "How long the fan controls the toy",
+        "default": 60,
+        "minimum": 10,
+        "maximum": 300,
+        "order": 2
+      },
+      "controlPageUrl": {
+        "type": "string",
+        "title": "Control page URL",
+        "description": "URL for the fan Give Control interface",
+        "maxLength": 200,
+        "default": "apexrevenue.works/control",
+        "order": 3
+      }
+    },
+    "order": 7
+  },
+  "sync_settings": {
+    "type": "fieldset",
+    "title": "Digital Sync (v0.2.0)",
+    "settings": {
+      "syncEnabled": {
+        "type": "boolean",
+        "title": "Enable Fan Toy Sync",
+        "description": "Allow fans to sync their own toys with your vibes",
+        "default": true,
+        "order": 0
+      },
+      "syncPageUrl": {
+        "type": "string",
+        "title": "Sync page URL",
+        "description": "URL for the fan toy sync page",
+        "maxLength": 200,
+        "default": "apexrevenue.works/sync",
+        "order": 1
+      },
+      "syncAnnounceInterval": {
+        "type": "number",
+        "title": "Sync announce interval (minutes)",
+        "description": "How often to announce fan sync availability (0 = off)",
+        "default": 15,
+        "minimum": 0,
+        "order": 2
+      }
+    },
+    "order": 8
+  },
   "moderation_settings": {
     "type": "fieldset",
     "title": "Chat Moderation & Filtering",
@@ -360,7 +429,7 @@
         "order": 15
       }
     },
-    "order": 6
+    "order": 9
   },
   "message_style_settings": {
     "type": "fieldset",
@@ -463,6 +532,6 @@
         "order": 14
       }
     },
-    "order": 7
+    "order": 10
   }
 }

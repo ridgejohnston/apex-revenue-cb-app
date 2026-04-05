@@ -29,12 +29,23 @@ if ($settings.autoAnnounceEnabled) {
 // —— Start recurring custom banner timer ——————————————————————————————————
 startRecurringBannerTimer();
 
+// ── v0.2.0: Initialize Give Control session state ───────────────────────────
+$kv.set('active_control_session', null);
+
+// ── v0.2.0: Start Digital Sync recurring announcements ──────────────────────
+if ($settings.syncEnabled) {
+  var syncInterval = parseInt($settings.syncAnnounceInterval || '15');
+  if (syncInterval > 0) {
+    $callback.create('syncAnnounce', syncInterval * 60);
+  }
+}
+
 // Extension auto-control
 if ($settings.extensionAutoControl) {
   sendExtensionSignal('start', 'app_start');
 }
 
-apexNotice('Apex Revenue v1.1.0 loaded. Type /apex help for commands.');
+apexNotice('Apex Revenue v2.0.0 loaded. Type /apex help for commands.');
 
 if ($room.owner) {
   apexWhisper($room.owner, 'App started. Theme: ' + ($settings.announceTheme || 'Apex Purple') +
