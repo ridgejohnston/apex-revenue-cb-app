@@ -161,13 +161,7 @@ if ($settings.giveControlEnabled && !tipEventTriggered
         max: parseInt($settings.maxDuration || '5')
     };
 
-    // Quick-tip time presets from settings (tokens → seconds)
-    var quickTips = [
-        { tokens: parseInt($settings.quickTip30sTokens || '50'),  secs: 30 },
-        { tokens: parseInt($settings.quickTip60sTokens || '100'), secs: 60 },
-        { tokens: parseInt($settings.quickTip150sTokens || '250'), secs: 150 },
-        { tokens: parseInt($settings.quickTip300sTokens || '500'), secs: 300 }
-    ];
+    var tokensPerMin = parseInt($settings.tokensPerExtraMinute || '100');
 
     // Store active session — balance = the activation tip amount
     $kv.set('active_control_session', {
@@ -178,7 +172,7 @@ if ($settings.giveControlEnabled && !tipEventTriggered
         balance: tokens,
         eventCosts: eventCosts,
         eventDurations: eventDurations,
-        quickTips: quickTips
+        tokensPerMinute: tokensPerMin
     });
 
     // Hidden message for Chrome Extension → relay → fan control page
@@ -190,7 +184,7 @@ if ($settings.giveControlEnabled && !tipEventTriggered
         balance: tokens,
         eventCosts: eventCosts,
         eventDurations: eventDurations,
-        quickTips: quickTips
+        tokensPerMinute: tokensPerMin
     }), {
         toUser: $room.owner,
         color: '#000000',
@@ -237,26 +231,10 @@ if (activeSession && tipper && tipper === activeSession.fan
     // Add tokens to account balance
     activeSession.balance = (activeSession.balance || 0) + tokens;
 
-    // Calculate extra time — check quick-tip presets first for exact match
-    var quickTips = activeSession.quickTips || [
-        { tokens: parseInt($settings.quickTip30sTokens || '50'),  secs: 30 },
-        { tokens: parseInt($settings.quickTip60sTokens || '100'), secs: 60 },
-        { tokens: parseInt($settings.quickTip150sTokens || '250'), secs: 150 },
-        { tokens: parseInt($settings.quickTip300sTokens || '500'), secs: 300 }
-    ];
-    var extraSecs = 0;
-    for (var qi = 0; qi < quickTips.length; qi++) {
-        if (tokens === quickTips[qi].tokens) {
-            extraSecs = quickTips[qi].secs;
-            break;
-        }
-    }
-    // Fallback: if not an exact quick-tip match, estimate from the 60s rate
-    if (extraSecs === 0) {
-        var rate60 = parseInt($settings.quickTip60sTokens || '100');
-        extraSecs = Math.floor((tokens / rate60) * 60);
-        if (extraSecs < 10) extraSecs = 10;
-    }
+    // Calculate extra time from tokensPerMinute
+    var tpm = activeSession.tokensPerMinute || parseInt($settings.tokensPerExtraMinute || '100');
+    var extraSecs = Math.floor((tokens / tpm) * 60);
+    if (extraSecs < 10) extraSecs = 10;
     activeSession.duration += extraSecs;
 
     $kv.set('active_control_session', activeSession);

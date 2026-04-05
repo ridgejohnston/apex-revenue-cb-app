@@ -365,37 +365,13 @@
         "default": "apexrevenue.works/control",
         "order": 3
       },
-      "quickTip30sTokens": {
+      "tokensPerExtraMinute": {
         "type": "number",
-        "title": "Quick tip: +30 seconds (tokens)",
-        "description": "Fan tips this amount to add 30 seconds of control time",
-        "default": 50,
-        "minimum": 1,
-        "order": 4
-      },
-      "quickTip60sTokens": {
-        "type": "number",
-        "title": "Quick tip: +60 seconds (tokens)",
-        "description": "Fan tips this amount to add 60 seconds of control time",
+        "title": "Tokens per extra minute of control",
+        "description": "Fan tips this many tokens to add 1 minute of control time",
         "default": 100,
-        "minimum": 1,
-        "order": 5
-      },
-      "quickTip150sTokens": {
-        "type": "number",
-        "title": "Quick tip: +150 seconds (tokens)",
-        "description": "Fan tips this amount to add 150 seconds of control time",
-        "default": 250,
-        "minimum": 1,
-        "order": 6
-      },
-      "quickTip300sTokens": {
-        "type": "number",
-        "title": "Quick tip: +300 seconds (tokens)",
-        "description": "Fan tips this amount to add 300 seconds of control time",
-        "default": 500,
-        "minimum": 1,
-        "order": 7
+        "minimum": 10,
+        "order": 4
       }
     },
     "order": 7
