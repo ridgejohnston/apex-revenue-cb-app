@@ -23,7 +23,7 @@
     if (blockedKeywords.length > 0 && containsBlockedKeyword(body, blockedKeywords)) {
       var blockAction = $settings.blockAction || 'replace';
       if (blockAction === 'hide') {
-        $message.body = '';
+        $message.setSpam(true);
         logModerationAction(username, 'Blocked keyword (hidden)', originalBody);
         return;
       } else if (blockAction === 'flag') {
@@ -43,7 +43,7 @@
 
       if (spamResult) {
         if (spamAction === 'hide') {
-          $message.body = '';
+          $message.setSpam(true);
           logModerationAction(username, 'Spam detected: ' + spamResult + ' (hidden)', originalBody);
           return;
         } else {
@@ -68,7 +68,7 @@
       if (!exempt) {
         var linkAction = $settings.linkAction || 'hide';
         if (linkAction === 'hide') {
-          $message.body = '';
+          $message.setSpam(true);
           logModerationAction(username, 'Link blocked (hidden)', originalBody);
           return;
         } else {
@@ -113,6 +113,6 @@
   // PHASE 3: APPLY MODIFIED BODY
   // ========================================================================
   if (body !== originalBody) {
-    $message.body = body;
+    $message.setBody(body);
   }
 })();
